@@ -7,6 +7,21 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## About the Project 
+
+The Laravel-based e-commerce website is a platform that provides a wide range of categories and products for customers to purchase. The website features an intuitive interface that allows customers to easily navigate through the various categories and find products that meet their needs. Customers can also make purchases using various payment methods available on the website.
+
+The website also features a dashboard for the website admin, providing complete control over the website's products and users. The admin can manage products, update product information, manage product categories, view customer orders and purchases, and manage user accounts.
+
+The website is built using the Laravel framework, a popular and robust PHP framework that provides a range of features for developing web applications. It provides efficient and secure web development practices, which ensure the website's performance and security.
+
+Overall, the Laravel-based e-commerce website is an excellent platform for customers to purchase products and for website administrators to manage the website's products and user accounts. It is an efficient, secure, and user-friendly platform that offers customers a hassle-free shopping experience.
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -61,6 +76,4 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
