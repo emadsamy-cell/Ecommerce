@@ -3,6 +3,7 @@
 @section('title' , 'Add-Product')
 
 @section('content')
+
 <div class="content-wrapper">
     <!-- Content -->
 
@@ -19,16 +20,26 @@
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="name">Product Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Product Name" name="name" />
+                        <input type="text" class="form-control" id="name" placeholder="Product Name" name="name" value="{{ old('name') }}" />
+                        @if ($errors->has('name'))
+
+                             <li class="list-group-item list-group-item-danger"> {{ $errors->first('name') }} </li>
+
+                        @endif
                     </div>
 
                     <div class="mb-3">
                         <label for="Category" class="form-label">Category</label>
-                        <select class="form-select" id="Category" aria-label="Default select example">
+                        <select class="form-select" id="Category" name ="category" aria-label="Default select example">
 
                         @foreach ($categories as $category)
-                            <option value="{{ $category['id'] }}" name='category'>{{ $category['name'] }}</option>
+                            <option value="{{ $category['id'] }}" name="category" >{{ $category['name'] }}</option>
                         @endforeach
+                        @if ($errors->has('categroy'))
+
+                             <li class="list-group-item list-group-item-danger"> {{ $errors->first('categroy') }} </li>
+
+                        @endif
                     </select>
 
                     </div>
@@ -45,8 +56,14 @@
                                 aria-label="john.doe"
                                 aria-describedby="price2"
                                 name ="price"
+                                value="{{ old('price') }}"
                             />
                         </div>
+                        @if ($errors->has('price'))
+
+                            <li class="list-group-item list-group-item-danger"> {{ $errors->first('price') }} </li>
+
+                        @endif
                     </div>
 
                     <div class="mb-3">
@@ -56,12 +73,23 @@
                           class="form-control"
                           placeholder="Discription about the Product"
                           name="discription"
+                          value = {{ old('discription') }}
                         ></textarea>
+                        @if ($errors->has('discription'))
+
+                            <li class="list-group-item list-group-item-danger"> {{ $errors->first('discription') }} </li>
+
+                        @endif
                     </div>
 
                     <div class="mb-3">
                         <label for="Image" class="form-label">Image</label>
-                        <input class="form-control" type="file" id="Image" name="image"/>
+                        <input class="form-control" type="file" id="Image" name="image" value="{{ old('image') }}"/>
+                        @if ($errors->has('image'))
+
+                            <li class="list-group-item list-group-item-danger"> {{ $errors->first('image') }} </li>
+
+                        @endif
                     </div>
 
                     <div class="mb-3">
@@ -76,11 +104,28 @@
                             aria-label="john.doe"
                             aria-describedby="basic-default-email2"
                             name="discount"
+                            value="{{ old('discount') }}"
                         />
                         <span class="input-group-text" id="basic-default-email2" style="color: #666afe;">%</span>
                         </div>
+                        @if ($errors->has('discount'))
+
+                            <li class="list-group-item list-group-item-danger"> {{ $errors->first('discount') }} </li>
+
+                         @endif
                     </div>
 
+                    <div class="mb-3 row">
+                        <label class="form-label" for="avaliable">Avliable</label>
+                        <div class="input-group input-group-merge">
+                          <input class="form-control" type="number" value="1" id="avaliable" name ="avaliable" value="{{ old('value') }}" />
+                        </div>
+                        @if ($errors->has('avaliable'))
+
+                             <li class="list-group-item list-group-item-danger"> {{ $errors->first('avaliable') }} </li>
+
+                        @endif
+                    </div>
 
                     <div class="row mt-3">
                         <div class="d-grid gap-2 col-lg-6 mx-auto">

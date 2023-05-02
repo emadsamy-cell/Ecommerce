@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('old-price' , 12 , 2);
             $table->decimal('new-price' , 12 , 2)->nullable();
             $table->string('image')->nullable();
-            $table->text('description');
+            $table->text('discription');
             $table->integer('discount')->default(0);
             $table->integer('avaliable')->default(0);
             $table->boolean('Isdiscount');

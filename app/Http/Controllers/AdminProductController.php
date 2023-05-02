@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\category;
 use App\Models\product;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
@@ -29,9 +31,27 @@ class AdminProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        dd($request);
+        $image = $request->file('image');
+        $ext = $image->getClientOriginalExtension();
+        $image_name = "product".$request->name.$ext;
+
+        $image->move(public_path('images/product') , $image_name);
+
+
+        product::create([
+            'name' => $request->name,
+            'category_id' => $request->category,
+            'old-price'=> $request->price,
+            'new-price' => ($request->price - $request->price * $request->discount),
+            'image' => $image_name,
+            'discription' => $request->discription,
+            'discount' => $request->discount,
+            'avaliable' => $request->avaliable,
+            'Isdiscount' => ($request->discount != 0),
+        ]);
+        return redirect(RouteServiceProvider::Admin)->with('success' , 'Product Added Successfully');
     }
 
     /**

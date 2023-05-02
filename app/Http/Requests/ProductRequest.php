@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
@@ -22,7 +23,13 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' =>['required','unique:'.product::class],
+            'price' => 'required|decimal:0,2',
+            'image' => 'required|image',
+            'discription' => 'required',
+            'discount' =>'required|numeric|between:0,100',
+            'avaliable' =>'required|min:1',
+            'category' =>'required',
         ];
     }
 }

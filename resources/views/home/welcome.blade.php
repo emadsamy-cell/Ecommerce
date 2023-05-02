@@ -21,11 +21,11 @@
 
                                 @foreach ( $categories as $category )
 
-                                    <li><a href="{{ route('show-products' , ['id' => $category['id'] , 'name' =>'show-products']) }}">
+                                    <li><a href="{{ route('show-products' , $category['id']) }}">
                                         {{ $category['name'] }}
                                     </a></li>
 
-                                    @endforeach
+                                @endforeach
 
                             </ul>
                         </div>
@@ -142,8 +142,8 @@
                                         <!-- single-product-wrap start -->
                                         <div class="single-product-wrap">
                                             <div class="product-image">
-                                                <a href="{{ route('show-products' , ['id' => $product['id'] , 'name' => 'show-single-product']) }}">
-                                                    <img src="{{ $product['image'] }}" alt="Li's product Image">
+                                                <a href="{{ route('show-products' , $product['id']) }}">
+                                                    <img src="{{ asset('images/product/'.$product['image']) }}" alt="Li's product Image">
                                                 </a>
                                                 <span class="sticker">New</span>
                                             </div>
@@ -151,12 +151,12 @@
                                                 <div class="product_desc_info">
                                                     <div class="product-review">
                                                         <h5 class="manufacturer">
-                                                            <a href="{{ route('show-products' , ['id' => $product['id'] , 'name' => 'show-single-product']) }}">
-                                                                {{ $product['decription'] }}
+                                                            <a href="{{ route('show-products' , $product['id']) }}">
+                                                                {{ $product['discription'] }}
                                                             </a>
                                                         </h5>
                                                     </div>
-                                                    <h4><a class="product_name" href="{{ route('show-products' , ['id' => $product['id'] , 'name' => 'show-single-product']) }}">
+                                                    <h4><a class="product_name" href="{{ route('show-products' , $product['id']) }}">
                                                         {{ $product['name'] }}
                                                     </a></h4>
                                                     <div class="price-box">
@@ -234,8 +234,8 @@
                                             <!-- single-product-wrap start -->
                                             <div class="single-product-wrap">
                                                 <div class="product-image">
-                                                    <a href="{{ route('test' , ['id' => $product['id']]) }}">
-                                                        <img src="{{ $product['image'] }}" alt="Li's product Image">
+                                                    <a href="{{ route('show-products' , $product['id']) }}">
+                                                        <img src="{{ asset('images/product/'.$product['image']) }}" alt="Li's product Image">
                                                     </a>
                                                     <span class="sticker">New</span>
                                                 </div>
@@ -244,7 +244,7 @@
                                                         <div class="product-review">
                                                             <h5 class="manufacturer">
                                                                 <a href="{{ route('test' , ['id' => $product['id']]) }}">
-                                                                    {{ $product['decription'] }}
+                                                                    {{ $product['discription'] }}
                                                                 </a>
                                                             </h5>
                                                         </div>

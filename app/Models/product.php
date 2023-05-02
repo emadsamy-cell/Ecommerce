@@ -11,9 +11,14 @@ class product extends Model
 
     protected $fillable = [
         'name',
-        'email',
-        'password',
-        'isAdmin'
+        'old-price',
+        'image',
+        'discription',
+        'discount',
+        'new-price',
+        'avaliable',
+        'Isdiscount',
+        'category_id',
     ];
 
 }
