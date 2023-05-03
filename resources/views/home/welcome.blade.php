@@ -160,8 +160,8 @@
                                                         {{ $product['name'] }}
                                                     </a></h4>
                                                     <div class="price-box">
-                                                        <span class="new-price new-price-2">${{ $product['new-price'] }}</span>
-                                                        <span class="old-price">${{ $product['old-price'] }}</span>
+                                                        <span class="new-price new-price-2">${{ $product['NewPrice'] }}</span>
+                                                        <span class="old-price">${{ $product['OldPrice'] }}</span>
                                                         <span class="discount-percentage">-{{ $product['discount' ]}}%</span>
                                                     </div>
                                                 </div>
@@ -253,13 +253,13 @@
                                                         </a></h4>
                                                     @if ( $product['discount'] )
                                                         <div class="price-box">
-                                                            <span class="new-price new-price-2">${{ $product['new-price'] }}</span>
-                                                            <span class="old-price">${{ $product['old-price'] }}</span>
+                                                            <span class="new-price new-price-2">${{ $product['NewPrice'] }}</span>
+                                                            <span class="old-price">${{ $product['OldPrice'] }}</span>
                                                             <span class="discount-percentage">-{{ $product['discount' ]}}%</span>
                                                         </div>
                                                     @else
                                                         <div class="price-box">
-                                                            <span class="new-price">${{ $product['old-price'] }}</span>
+                                                            <span class="new-price">${{ $product['OldPrice'] }}</span>
                                                         </div>
                                                     @endif
                                                     </div>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class AdminUserController extends Controller
@@ -64,7 +66,9 @@ class AdminUserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id)->first();
+
+        return view('admin.user.edit' , ['user' => $user]);
     }
 
     /**
@@ -72,7 +76,22 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $request->validate([
+            'password' =>['required','confirmed'],
+            'name'=>['required','string'],
+            'email' =>['required' , Rule::unique('Users', 'email')->ignore($id)],
+        ]);
+
+        $user = User::find($id)->first();
+
+        $user->name = $request->name;
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+
+        $user->save();
+
+        return redirect(RouteServiceProvider::Admin)->with('success' , 'User Updated Successfullty!');
     }
 
     /**
@@ -80,6 +99,7 @@ class AdminUserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::find($id)->delete();
+         return redirect(RouteServiceProvider::Admin)->with('success' , 'User Deleted Successfully!');
     }
 }

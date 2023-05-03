@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -11,7 +14,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-       return view('admin.dashboard');
+
+       $users = User::orderBy('isAdmin','desc')->get();
+
+       $products = product::orderBy('category_id')->get();
+
+       return view('admin.dashboard' , ['users' => $users , 'products' => $products]);
     }
 
     /**

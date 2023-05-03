@@ -7,6 +7,7 @@ use App\Models\category;
 use App\Models\product;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminProductController extends Controller
 {
@@ -43,8 +44,8 @@ class AdminProductController extends Controller
         product::create([
             'name' => $request->name,
             'category_id' => $request->category,
-            'old-price'=> $request->price,
-            'new-price' => ($request->price - $request->price * $request->discount),
+            'OldPrice'=> $request->price,
+            'NewPrice' => ($request->price - $request->price * $request->discount/100),
             'image' => $image_name,
             'discription' => $request->discription,
             'discount' => $request->discount,
@@ -67,7 +68,10 @@ class AdminProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = product::find($id);
+        $categories = category::get();
+
+        return view('admin.product.edit',['product' => $product , 'categories' => $categories]);
     }
 
     /**
@@ -75,14 +79,53 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $product = product::find($id);
+
+
+
+        $request->validate([
+            'name' =>['required',
+                    Rule::unique('products','name')->ignore($id)],
+            'price' => ['required' , 'numeric','decimal:0,2'],
+            'discription' => ['required'],
+            'discount' =>['required','numeric','between:0,100'],
+            'avaliable' =>['required','numeric','min:1'],
+            'category' =>['required'],
+        ]);
+        $image_name = $product->image;
+        if($request->files->has('image')){
+            $request->validate([
+                'image' => 'required|image',
+            ]);
+            $img = $request->file('image');
+            $ext = $img->getClientOriginalExtension();
+            $image_name = "product".$request->name.$ext;
+            $img->move(public_path('images/product'),$image_name);
+        }
+
+        $product->name = $request->name;
+        $product->discription = $request->discription;
+        $product->discount = $request->discount;
+        $product->image = $image_name;
+        $product->avaliable = $request->avaliable;
+        $product->OldPrice = $request->price;
+        $product->NewPrice = $request->price - ($request->price * $request->discount / 100);
+        $product->category_id = $request->category;
+        $product->Isdiscount = ($request->discount != 0);
+
+        $product->save();
+
+        return redirect(RouteServiceProvider::Admin)->with('success' , 'Product Updated Successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+         $product = product::find($id)->delete();
+         return redirect(RouteServiceProvider::Admin)->with('success' , 'Product Deleted Successfully!');
     }
 }

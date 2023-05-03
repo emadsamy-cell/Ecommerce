@@ -24,11 +24,11 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' =>['required','unique:'.product::class],
-            'price' => 'required|decimal:0,2',
+            'price' => 'required|numeric|decimal:0,2',
             'image' => 'required|image',
             'discription' => 'required',
             'discount' =>'required|numeric|between:0,100',
-            'avaliable' =>'required|min:1',
+            'avaliable' =>'required|numeric|min:1',
             'category' =>'required',
         ];
     }
