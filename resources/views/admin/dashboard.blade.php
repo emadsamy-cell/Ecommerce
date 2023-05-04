@@ -102,9 +102,10 @@
                                 class="avatar avatar-xs pull-up"
                                 title="{{ $product->name }}"
                                 style="width: 4.625rem;
-                                        height:4.625rem;"
+                                        height:4.625rem;
+                                        "
                               >
-                                <img src="{{ asset('images/product/'.$product->image) }}" alt="Avatar" class="rounded-circle" style="border: :0px solid #fff;"/>
+                                <img src="{{ asset('images/product/'.$product->image) }}" alt="Avatar" class="rounded-circle" style="border: :0px solid #fff; object-fit:cover;"/>
                               </li>
 
                             </ul>

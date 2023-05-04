@@ -15,13 +15,15 @@ class product extends Model
         return $this->belongsTo(category::class);
     }
 
+    
+
     protected $fillable = [
         'name',
-        'old-price',
+        'OldPrice',
         'image',
         'discription',
         'discount',
-        'new-price',
+        'NewPrice',
         'avaliable',
         'Isdiscount',
         'category_id',

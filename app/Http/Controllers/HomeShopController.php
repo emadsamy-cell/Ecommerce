@@ -6,17 +6,14 @@ use App\Models\category;
 use App\Models\product;
 use Illuminate\Http\Request;
 
-class homeController extends Controller
+class HomeShopController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $Allproducts = product::orderBy('discount','desc')->get();
-        $categories = category::get();
-
-        return view('home.welcome' , ['Allproducts' => $Allproducts , 'categories' => $categories]);
+        //
     }
 
     /**
@@ -35,13 +32,15 @@ class homeController extends Controller
         //
     }
 
-
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $category = category::find($id);
+        $products = $category->products;
+
+        return view('home.shop', ['category'=>$category , 'products' => $products]);
     }
 
     /**

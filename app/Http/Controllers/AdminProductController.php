@@ -90,7 +90,7 @@ class AdminProductController extends Controller
             'price' => ['required' , 'numeric','decimal:0,2'],
             'discription' => ['required'],
             'discount' =>['required','numeric','between:0,100'],
-            'avaliable' =>['required','numeric','min:1'],
+            'avaliable' =>['required','numeric','min:0'],
             'category' =>['required'],
         ]);
         $image_name = $product->image;

@@ -21,9 +21,18 @@
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <ul class="ht-setting-list">
-                                            <li><a href="login-register.html">My Account</a></li>
-
-                                            <li><button >Log out</button></li>
+                                            <li><a href="login-register.html">Check Out</a></li>
+                                            <li>
+                                            <button  type="submit" style="
+                                                border: 0;
+                                                padding: 0px 14px;
+                                                text-align: inherit;
+                                                background-color: inherit;
+                                                cursor: pointer;
+                                            ">
+                                                <span >Log Out</span>
+                                            </button>
+                                        </li>
                                         </ul>
                                     </form>
                                     </div>
@@ -50,7 +59,7 @@
                                 <div class="ht-language-trigger"><span>English</span></div>
                                 <div class="language ht-language">
                                     <ul class="ht-setting-list">
-                                        <li class="active"><a href="#"><img src="images/menu/flag-icon/1.jpg" alt="">English</a></li>
+                                        <li class="active"><a href="#"><img src="{{ asset('images/menu/flag-icon/1.jpg') }}" alt="">English</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -71,7 +80,7 @@
                 <div class="col-lg-3">
                     <div class="logo pb-sm-30 pb-xs-30">
                         <a href="{{ route('home') }}">
-                            <img src="images/menu/logo/1.jpg" alt="">
+                            <img src="{{ asset('images/menu/logo/1.jpg') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -80,78 +89,7 @@
                 <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                     <!-- Begin Header Middle Searchbox Area -->
                     <form action="#" class="hm-searchbox">
-                        <select class="nice-select select-search-category">
-                            <option value="0">All</option>
-                            <option value="10">Laptops</option>
-                            <option value="17">- -  Prime Video</option>
-                            <option value="20">- - - -  All Videos</option>
-                            <option value="21">- - - -  Blouses</option>
-                            <option value="22">- - - -  Evening Dresses</option>
-                            <option value="23">- - - -  Summer Dresses</option>
-                            <option value="24">- - - -  T-shirts</option>
-                            <option value="25">- - - -  Rent or Buy</option>
-                            <option value="26">- - - -  Your Watchlist</option>
-                            <option value="27">- - - -  Watch Anywhere</option>
-                            <option value="28">- - - -  Getting Started</option>
-                            <option value="18">- - - -  Computers</option>
-                            <option value="29">- - - -  More to Explore</option>
-                            <option value="30">- - - -  TV &amp; Video</option>
-                            <option value="31">- - - -  Audio &amp; Theater</option>
-                            <option value="32">- - - -  Camera, Photo </option>
-                            <option value="33">- - - -  Cell Phones</option>
-                            <option value="34">- - - -  Headphones</option>
-                            <option value="35">- - - -  Video Games</option>
-                            <option value="36">- - - -  Wireless Speakers</option>
-                            <option value="19">- - - -  Electronics</option>
-                            <option value="37">- - - -  Amazon Home</option>
-                            <option value="38">- - - -  Kitchen &amp; Dining</option>
-                            <option value="39">- - - -  Furniture</option>
-                            <option value="40">- - - -  Bed &amp; Bath</option>
-                            <option value="41">- - - -  Appliances</option>
-                            <option value="11">TV &amp; Audio</option>
-                            <option value="42">- -  Chamcham</option>
-                            <option value="45">- - - -  Office</option>
-                            <option value="47">- - - -  Gaming</option>
-                            <option value="48">- - - -  Chromebook</option>
-                            <option value="49">- - - -  Refurbished</option>
-                            <option value="50">- - - -  Touchscreen</option>
-                            <option value="51">- - - -  Ultrabooks</option>
-                            <option value="52">- - - -  Blouses</option>
-                            <option value="43">- -  Meito</option>
-                            <option value="53">- - - -  Hard Drives</option>
-                            <option value="54">- - - -  Graphic Cards</option>
-                            <option value="55">- - - -  Processors (CPU)</option>
-                            <option value="56">- - - -  Memory</option>
-                            <option value="57">- - - -  Motherboards</option>
-                            <option value="58">- - - -  Fans &amp; Cooling</option>
-                            <option value="59">- - - -  CD/DVD Drives</option>
-                            <option value="44">- -  Sony Bravia</option>
-                            <option value="60">- - - -  Sound Cards</option>
-                            <option value="61">- - - -  Cases &amp; Towers</option>
-                            <option value="62">- - - -  Casual Dresses</option>
-                            <option value="63">- - - -  Evening Dresses</option>
-                            <option value="64">- - - -  T-shirts</option>
-                            <option value="65">- - - -  Tops</option>
-                            <option value="12">Smartphone</option>
-                            <option value="66">- -  Camera Accessories</option>
-                            <option value="68">- - - -  Octa Core</option>
-                            <option value="69">- - - -  Quad Core</option>
-                            <option value="70">- - - -  Dual Core</option>
-                            <option value="71">- - - -  7.0 Screen</option>
-                            <option value="72">- - - -  9.0 Screen</option>
-                            <option value="73">- - - -  Bags &amp; Cases</option>
-                            <option value="67">- -  XailStation</option>
-                            <option value="74">- - - -  Batteries</option>
-                            <option value="75">- - - -  Microphones</option>
-                            <option value="76">- - - -  Stabilizers</option>
-                            <option value="77">- - - -  Video Tapes</option>
-                            <option value="78">- - - -  Memory Card Readers</option>
-                            <option value="79">- - - -  Tripods</option>
-                            <option value="13">Cameras</option>
-                            <option value="14">headphone</option>
-                            <option value="15">Smartwatch</option>
-                            <option value="16">Accessories</option>
-                        </select>
+
                         <input type="text" placeholder="Enter your search key ...">
                         <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -161,8 +99,15 @@
                         <ul class="hm-menu">
                             <!-- Begin Header Middle Wishlist Area -->
                             <li class="hm-wishlist">
-                                <a href="wishlist.html">
-                                    <span class="cart-item-count wishlist-item-count">0</span>
+                                <a href="{{ route('WishList.index') }}">
+                                    <span class="cart-item-count wishlist-item-count">
+                                        @auth
+                                            {{ count(Auth::user()->wishlists) }}
+                                        @endauth
+                                        @guest
+                                            0
+                                        @endguest
+                                    </span>
                                     <i class="fa fa-heart-o"></i>
                                 </a>
                             </li>
@@ -180,7 +125,7 @@
                                     <ul class="minicart-product-list">
                                         <li>
                                             <a href="single-product.html" class="minicart-product-image">
-                                                <img src="images/product/small-size/3.jpg" alt="cart products">
+                                                <img src="{{ asset('images/product/small-size/3.jpg') }}" alt="cart products">
                                             </a>
                                             <div class="minicart-product-details">
                                                 <h6><a href="single-product.html">Aenean eu tristique</a></h6>
@@ -192,7 +137,7 @@
                                         </li>
                                         <li>
                                             <a href="single-product.html" class="minicart-product-image">
-                                                <img src="images/product/small-size/4.jpg" alt="cart products">
+                                                <img src="{{ asset('images/product/small-size/4.jpg') }}" alt="cart products">
                                             </a>
                                             <div class="minicart-product-details">
                                                 <h6><a href="single-product.html">Aenean eu tristique</a></h6>

@@ -5,8 +5,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\HomeProductController;
+use App\Http\Controllers\HomeShopController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\WishListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +27,11 @@ Route::resource('/',homeController::class)->names([
     'index' => 'home' ,
     'show' => 'show-products'
 ]);
+
+Route::resource('HomeProduct' , HomeProductController::class);
+Route::resource('HomeShop', HomeShopController::class);
+Route::resource('WishList', WishListController::class);
+
 Route::middleware('Admin')->group(function(){
 
     Route::resource('admin', AdminController::class);
@@ -34,10 +42,6 @@ Route::middleware('Admin')->group(function(){
 
 });
 
-
-Route::get('/dasboard', function () {
-
-})->name('test');
 
 
 Route::get('/dashboard', function () {
