@@ -113,53 +113,63 @@
                             </li>
                             <!-- Header Middle Wishlist Area End Here -->
                             <!-- Begin Header Mini Cart Area -->
+
                             <li class="hm-minicart">
                                 <div class="hm-minicart-trigger">
+
                                     <span class="item-icon"></span>
-                                    <span class="item-text">£160
-                                        <span class="cart-item-count">2</span>
+                                    <span class="item-text">${{ Session::has('cart') ? Session('cart')->totalPrice : 0 }}
+                                        <span class="cart-item-count">{{ Session::has('cart') ? Session('cart')->totalQty : 0 }}</span>
                                     </span>
                                 </div>
                                 <span></span>
                                 <div class="minicart">
                                     <ul class="minicart-product-list">
-                                        <li>
-                                            <a href="single-product.html" class="minicart-product-image">
-                                                <img src="{{ asset('images/product/small-size/3.jpg') }}" alt="cart products">
-                                            </a>
-                                            <div class="minicart-product-details">
-                                                <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                <span>£80 x 1</span>
+                                        @if (Session::has('cart'))
+                                            @foreach (Session('cart')->items as $product)
+                                                <li>
+                                                    <a href="{{ route('HomeProduct.show' , $product['item']->id) }}" class="minicart-product-image">
+                                                        <img src="{{ asset('images/product/'.$product['item']->image) }}" alt="cart products">
+                                                    </a>
+                                                    <div class="minicart-product-details">
+                                                        <h6><a href="{{ route('HomeProduct.show' , $product['item']->id) }}">{{ $product['item']->name }}</a></h6>
+                                                        <span>${{ $product['price'] }} x {{ $product['qty'] }}</span>
+                                                    </div>
+                                                    <a class="close" href="{{ route('deleteFromCart' , $product['item']->id) }}">
+                                                        <i class="fa fa-close"></i>
+                                                    </a>
+                                                </li>
+
+
+                                            @endforeach
+                                            <p class="minicart-total">SUBTOTAL: <span>${{ Session('cart')->totalPrice }}</span></p>
+                                            <div class="minicart-button">
+                                                <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <span>View Full Cart</span>
+                                                </a>
+                                                <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
+                                                    <span>Checkout</span>
+                                                </a>
                                             </div>
-                                            <button class="close">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="single-product.html" class="minicart-product-image">
-                                                <img src="{{ asset('images/product/small-size/4.jpg') }}" alt="cart products">
-                                            </a>
-                                            <div class="minicart-product-details">
-                                                <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                <span>£80 x 1</span>
-                                            </div>
-                                            <button class="close">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </li>
+                                        @else
+                                            <div class="alert alert-danger" role="alert">Your cart is empty</div>
+                                        @endif
+
+
                                     </ul>
-                                    <p class="minicart-total">SUBTOTAL: <span>£160</span></p>
-                                    <div class="minicart-button">
-                                        <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                            <span>View Full Cart</span>
-                                        </a>
-                                        <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
-                                            <span>Checkout</span>
-                                        </a>
-                                    </div>
+
                                 </div>
                             </li>
                             <!-- Header Mini Cart Area End Here -->
+                            @if (Session::has('fail'))
+
+                                    <span class="list-group-item list-group-item-danger"> {{ Session::get('fail') }} </span>
+
+                            @endif
+
+                            @if (\Session::has('success'))
+                                <li class = "list-group-item list-group-item-success">{!! \Session::get('success') !!}</li>
+                            @endif
                         </ul>
                     </div>
                     <!-- Header Middle Right Area End Here -->

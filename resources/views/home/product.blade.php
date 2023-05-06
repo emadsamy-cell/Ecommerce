@@ -41,16 +41,23 @@
                         </div>
 
                         <div class="single-add-to-cart">
-                            <form action="#" class="cart-quantity">
+                            <form action="{{ route('addManyToCart' , $product->id) }}" class="cart-quantity" method="POST">
+                                @csrf
                                 <div class="quantity">
                                     <label>Quantity</label>
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" value="1" type="text">
+                                        <input class="cart-plus-minus-box" value="1" type="text" name="count">
                                         <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                     </div>
+
                                 </div>
                                 <button class="add-to-cart" type="submit">Add to cart</button>
+                                    @if ($errors->has('count'))
+
+                                        <li class="list-group-item list-group-item-danger"> {{ $errors->first('count') }} </li>
+
+                                    @endif
                             </form>
                         </div>
                         <div class="product-additional-info pt-25">
@@ -158,7 +165,7 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                    <li class="add-cart active"><a href="{{ route('addToCart' , ['id' => $similar_product->id , 'count' => 1]) }}">Add to cart</a></li>
                                                     <li>
                                                         <form action="{{ route('WishList.store' , $similar_product->id) }}" method="POST">
                                                             @csrf

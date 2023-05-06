@@ -19,7 +19,7 @@ class WishListController extends Controller
             return view('home.wishlist' , ['wishlist' => $wishlist]);
         }
         else{
-            return view('auth.login');
+            return redirect(route('login'));
         }
     }
 
@@ -54,7 +54,7 @@ class WishListController extends Controller
             return view('home.wishlist' , ['wishlist' => $wishlist]);
         }
         else{
-            return view('auth.login');
+            return redirect(route('login'));
         }
     }
 
