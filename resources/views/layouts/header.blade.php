@@ -144,10 +144,10 @@
                                             @endforeach
                                             <p class="minicart-total">SUBTOTAL: <span>${{ Session('cart')->totalPrice }}</span></p>
                                             <div class="minicart-button">
-                                                <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                <a href="{{ route('cart.index') }}" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                     <span>View Full Cart</span>
                                                 </a>
-                                                <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
+                                                <a href="{{ route('checkout.index') }}" class="li-button li-button-fullwidth li-button-sm">
                                                     <span>Checkout</span>
                                                 </a>
                                             </div>

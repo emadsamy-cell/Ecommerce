@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Checkout;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\HomeProductController;
 use App\Http\Controllers\HomeShopController;
@@ -36,6 +38,9 @@ Route::resource('WishList', WishListController::class);
 Route::get('Cart/{id}/{count}' , [CartController::class , 'add'])->name('addToCart');
 Route::get('Cart/{id}}' , [CartController::class , 'delete'])->name('deleteFromCart');
 Route::post('Cart/{id}' , [CartController::class , 'addMany'])->name('addManyToCart');
+Route::resource('cart' , CartController::class);
+Route::resource('checkout', CheckoutController::class);
+
 
 Route::middleware('Admin')->group(function(){
 

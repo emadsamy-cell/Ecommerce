@@ -39,6 +39,15 @@ class cart
         $this->totalQty -= $this->items[$id]['qty'];
         $this->totalPrice -= $this->items[$id]['qty'] * $this->items[$id]['price'];
         unset($this->items[$id]);
+    }
+
+    public function Update($id , $count){
+
+        $product = product::find($id);
+
+        $this->remove($id);
+        $this->addToCart($product , $count);
 
     }
+
 }
