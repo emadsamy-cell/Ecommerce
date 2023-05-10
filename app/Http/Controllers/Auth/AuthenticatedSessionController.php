@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         if($IsAdmin == 1){
             return redirect()->intended(RouteServiceProvider::Admin);
         }
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->back();
     }
 
     /**
@@ -45,9 +45,7 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
 
         return redirect('/');
     }

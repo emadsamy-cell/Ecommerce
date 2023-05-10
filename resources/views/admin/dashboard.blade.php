@@ -11,6 +11,78 @@
             <li class = "list-group-item list-group-item-success">{!! \Session::get('success') !!}</li>
         @endif
         <div class="card">
+            <h5 class="card-header">Orders</h5>
+            <div class="table-responsive text-nowrap">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach ($checkouts as $checkout)
+                    <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $checkout->name }}</strong></td>
+                        <td>{{ $checkout->email }}</td>
+                        <td>{{ $checkout->main_address }}</td>
+                        <td>
+                            @if ($checkout->status == 0)
+                                <span class="badge bg-label-warning me-1">Pending</span>
+
+                            @elseif ($checkout->status == 1)
+                                <span class="badge bg-label-primary me-1">Active</span>
+
+                            @elseif ($checkout->status == 2)
+                                <span class="badge bg-label-success me-1">Completed</span>
+
+                            @else
+                                <span class="badge rounded-pill bg-label-danger">Canceled</span>
+
+                            @endif
+
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu"  style="min-width: 0%;">
+                                @if ($checkout->status == 0)
+                                    <a class="dropdown-item" href="{{ route('UpdateStatus' , ['id' => $checkout->id , 'status' => 1]) }}"
+                                    ><span class="badge bg-success" style="width: 100%">Accept</span>
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('UpdateStatus' , ['id' => $checkout->id , 'status' => 0]) }}"
+                                        ><span class="badge bg-danger" style="width: 100%">Reject</span>
+                                    </a>
+                                @elseif ($checkout->status == 1)
+                                <a class="dropdown-item" href="{{ route('UpdateStatus' , ['id' => $checkout->id , 'status' => 1]) }}"
+                                    ><span class="badge bg-success" style="width: 100%">complete</span>
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('UpdateStatus' , ['id' => $checkout->id , 'status' => 0]) }}"
+                                        ><span class="badge bg-danger" style="width: 100%">cancel</span>
+                                    </a>
+                                @endif
+                                <a class="dropdown-item" href="{{ route('order.show' , $checkout->id) }}"
+                                    ><i class="bx bx-edit-alt me-1"></i>Show more
+                                </a>
+
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="card">
             <h5 class="card-header">Users</h5>
             <div class="table-responsive text-nowrap">
             <table class="table table-hover">

@@ -54,7 +54,7 @@
                                                 <span class="out-stock">out Stock
                                             @endif
                                         </span></td>
-                                        <td class="li-product-add-cart"><a href="#">add to cart</a></td>
+                                        <td class="li-product-add-cart"><a href="{{ route('addToCart' , ['id' => $wish->product->id , 'count' => 1]) }}">Add to cart</a></td>
                                     </tr>
                                     @endforeach
 

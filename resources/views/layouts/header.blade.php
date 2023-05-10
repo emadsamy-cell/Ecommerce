@@ -5,7 +5,9 @@
             <div class="row">
                 <!-- Begin Header Top Left Area -->
                 <div class="col-lg-3 col-md-4">
-
+                    @if (\Session::has('order successed'))
+                            <span class = "list-group-item list-group-item-success">{!! \Session::get('order successed') !!}</span>
+                    @endif
                 </div>
                 <!-- Header Top Left Area End Here -->
                 <!-- Begin Header Top Right Area -->

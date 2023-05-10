@@ -112,6 +112,8 @@ class CartController extends Controller
 
         else{
 
+            $request->session()->forget('cart');
+
             return redirect(RouteServiceProvider::HOME);
 
         }

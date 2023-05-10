@@ -3,26 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\checkout;
-use App\Models\product;
-use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class AdminOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-       $users = User::orderBy('isAdmin','desc')->get();
-
-       $products = product::orderBy('category_id')->get();
-
-       $checkouts = checkout::orderBy('status')->get();
-
-       return view('admin.dashboard' , ['users' => $users , 'products' => $products , 'checkouts' => $checkouts]);
+        //
     }
 
     /**
@@ -46,7 +37,8 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $checkout = checkout::find($id);
+        return redirect()->back();
     }
 
     /**
@@ -71,5 +63,24 @@ class AdminController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function status_update($id , $status) {
+
+        $checkout = checkout::find($id);
+
+        if($status == 0){
+            // cancel
+            $checkout->status = 4;
+            $checkout->save();
+
+            return redirect(RouteServiceProvider::Admin)->with('success' , 'Order canceled');
+        }
+        else{
+            // update status of the order
+            $checkout->status ++;
+            $checkout->save();
+            return redirect(RouteServiceProvider::Admin)->with('success' , 'Order updated');
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CartController;
@@ -48,7 +49,8 @@ Route::middleware('Admin')->group(function(){
     Route::resource('AdminUser' , AdminUserController::class);
     Route::resource('AdminProduct', AdminProductController::class);
     Route::resource('AdminCategory' , AdminCategoryController::class);
-
+    Route::get('OrderStatus/{id}/{status}' , [AdminOrderController::class , 'status_update'])->name('UpdateStatus');
+    Route::resource('order', AdminOrderController::class);
 
 });
 
