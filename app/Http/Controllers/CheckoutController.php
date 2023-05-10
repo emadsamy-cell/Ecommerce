@@ -9,6 +9,7 @@ use App\Models\product;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -37,6 +38,10 @@ class CheckoutController extends Controller
      */
     public function store(BillingRequest $request)
     {
+        // check logged in
+        if(! (Auth::check())){
+            return redirect(route('login'));
+        }
         // check all product are avaliable
 
         $productsInCart = session('cart')->items;

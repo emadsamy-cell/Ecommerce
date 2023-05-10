@@ -87,7 +87,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                        <li class="add-cart active"><a href="{{ route('addToCart' , ['id' => $product->id , 'count' => 1]) }}">Add to cart</a></li>
                                                         <li>
                                                             <form action="{{ route('WishList.store' , $product->id) }}" method="POST">
                                                                 @csrf
@@ -151,7 +151,7 @@
                                         <div class="col-lg-4">
                                             <div class="shop-add-action mb-xs-30">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart"><a href="#">Add to cart</a></li>
+                                                    <li class="add-cart"><a href="{{ route('addToCart' , ['id' => $product->id , 'count' => 1]) }}">Add to cart</a></li>
                                                     <li>
                                                         <form action="{{ route('WishList.store' , $product->id) }}" method="POST">
                                                             @csrf
